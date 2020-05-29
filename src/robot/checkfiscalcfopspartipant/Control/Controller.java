@@ -5,14 +5,13 @@ import java.io.File;
 import robot.checkfiscalcfopspartipant.Model.ConfigurationFileModel;
 import robot.checkfiscalcfopspartipant.Model.FiscalEntryModel;
 import robot.checkfiscalcfopspartipant.View.UserInputsView;
+import sql.Database;
 
 public class Controller {
     //Models and Views
     private UserInputsView inputsView;
     private ConfigurationFileModel configurationFileModel;
-    private FiscalEntryModel fiscalEntryModel;
-    
-    private String fileSearchCFOPsErrors = "getParticipantEntriesOnReferenceWithoutAnyCFOPsList.sql";
+    private FiscalEntryModel fiscalEntryModel;    
            
     private Integer enterpriseCode;
     private Integer referenceStart;
@@ -60,5 +59,18 @@ public class Controller {
         public void run() {
             fiscalEntryModel.setIrregularCFOPs(configurationFileModel.getParticipantCFOPs(), enterpriseCode, referenceStart, referenceEnd, entriesType);
         }    
+    }
+    
+    public class setDatabaseStatic extends Executavel{
+
+        public setDatabaseStatic() {
+            name = "Conectando ao banco de dados";
+        }
+
+        @Override
+        public void run() {
+            Database.setStaticObject(new Database("sci.cfg"));
+        }
+        
     }
 }
