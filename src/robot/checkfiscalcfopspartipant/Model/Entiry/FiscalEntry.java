@@ -1,4 +1,4 @@
-package robot.checkfiscalcfopspartipant.Model;
+package robot.checkfiscalcfopspartipant.Model.Entiry;
 
 public class FiscalEntry {
     private Integer key;
