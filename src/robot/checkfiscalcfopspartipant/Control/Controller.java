@@ -9,6 +9,8 @@ public class Controller {
     //Models and Views
     private UserInputsView inputsView;
     private ConfigurationFileModel configurationFileModel;
+    
+    private String fileSearchCFOPsErrors = "getParticipantEntriesOnReferenceWithoutAnyCFOPsList.sql";
            
     private Integer enterpriseCode;
     private Integer referenceStart;

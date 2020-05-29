@@ -49,4 +49,8 @@ public class ConfigurationFileModel {
             }
         }
     }
+
+    public Map<Integer, List<Integer>> getParticipantCFOPs() {
+        return participantCFOPs;
+    }        
 }
