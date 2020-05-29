@@ -3,12 +3,14 @@ package robot.checkfiscalcfopspartipant.Control;
 import Entity.Executavel;
 import java.io.File;
 import robot.checkfiscalcfopspartipant.Model.ConfigurationFileModel;
+import robot.checkfiscalcfopspartipant.Model.FiscalEntryModel;
 import robot.checkfiscalcfopspartipant.View.UserInputsView;
 
 public class Controller {
     //Models and Views
     private UserInputsView inputsView;
     private ConfigurationFileModel configurationFileModel;
+    private FiscalEntryModel fiscalEntryModel;
     
     private String fileSearchCFOPsErrors = "getParticipantEntriesOnReferenceWithoutAnyCFOPsList.sql";
            
@@ -46,5 +48,17 @@ public class Controller {
             configurationFileModel.setParticipantCFOpsFromFile();
        }
         
+    }
+    
+    public class setIrregularCFOPs extends Executavel{
+
+        public setIrregularCFOPs() {
+            name = "Procurando cfops irregulares";
+        }
+
+        @Override
+        public void run() {
+            fiscalEntryModel.setIrregularCFOPs(configurationFileModel.getParticipantCFOPs(), enterpriseCode, referenceStart, referenceEnd, entriesType);
+        }    
     }
 }
