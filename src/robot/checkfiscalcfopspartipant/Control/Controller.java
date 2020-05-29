@@ -14,6 +14,7 @@ public class Controller {
     private Integer referenceStart;
     private Integer referenceEnd;
     private File saveFodler;
+    private String entriesType;
     
     public class setUserInputs extends Executavel{
 
@@ -28,6 +29,7 @@ public class Controller {
             referenceEnd = inputsView.getLastReference();
             configurationFileModel.setFile(inputsView.getConfigurationFile());
             saveFodler = inputsView.getSaveFolder();
+            entriesType = inputsView.getEntriesType();
         }        
     }
     

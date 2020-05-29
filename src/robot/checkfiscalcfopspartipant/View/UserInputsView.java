@@ -48,4 +48,12 @@ public class UserInputsView {
     public Integer getLastReference() {
         return getIntegerValue("Insira a referência final(está inclusa na pesquisa):\nExemplo: 201906 para junho de 2019", "Número de referência inválido!");
     }
+    
+    public String getEntriesType(){
+        String[] types = new String[]{"Entrada","Saida","Serviço"};
+        
+        int inputType = JOptionPane.showOptionDialog(null, "Escolha o tipo de lançamento:", "Escolha o tipo de lançamento", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, types, types[0]);
+        
+        return types[inputType].substring(0, 2).toLowerCase();
+    }
 }
