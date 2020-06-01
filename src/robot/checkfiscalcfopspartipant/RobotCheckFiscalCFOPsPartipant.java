@@ -21,6 +21,7 @@ public class RobotCheckFiscalCFOPsPartipant {
         execs.add(controller.new setDatabaseStatic());
         execs.add(controller.new setParticipantsCFOPs());
         execs.add(controller.new setIrregularCFOPs());
+        execs.add(controller.new createWarningFile());
         
         Execution exec = new Execution("Encontrar lançamentos com CFOPs incorretos");
         exec.setExecutables(execs);

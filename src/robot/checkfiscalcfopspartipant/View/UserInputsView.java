@@ -54,6 +54,6 @@ public class UserInputsView {
         
         int inputType = JOptionPane.showOptionDialog(null, "Escolha o tipo de lançamento:", "Escolha o tipo de lançamento", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, types, types[0]);
         
-        return types[inputType].substring(0, 2).toLowerCase();
+        return types[inputType];
     }
 }

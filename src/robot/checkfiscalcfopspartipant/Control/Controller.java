@@ -4,6 +4,7 @@ import Entity.Executavel;
 import java.io.File;
 import robot.checkfiscalcfopspartipant.Model.ConfigurationFileModel;
 import robot.checkfiscalcfopspartipant.Model.FiscalEntryModel;
+import robot.checkfiscalcfopspartipant.View.FiscalEntryView;
 import robot.checkfiscalcfopspartipant.View.UserInputsView;
 import sql.Database;
 
@@ -11,12 +12,13 @@ public class Controller {
     //Models and Views
     private UserInputsView inputsView;
     private ConfigurationFileModel configurationFileModel;
-    private FiscalEntryModel fiscalEntryModel;    
+    private FiscalEntryModel fiscalEntryModel;
+    FiscalEntryView fiscalEntryView = new FiscalEntryView();
            
     private Integer enterpriseCode;
     private Integer referenceStart;
     private Integer referenceEnd;
-    private File saveFodler;
+    private File saveFolder;
     private String entriesType;
     
     public class setUserInputs extends Executavel{
@@ -31,7 +33,7 @@ public class Controller {
             referenceStart = inputsView.getFirstReference();
             referenceEnd = inputsView.getLastReference();
             configurationFileModel.setFile(inputsView.getConfigurationFile());
-            saveFodler = inputsView.getSaveFolder();
+            saveFolder = inputsView.getSaveFolder();
             entriesType = inputsView.getEntriesType();
         }        
     }
@@ -59,6 +61,22 @@ public class Controller {
         public void run() {
             fiscalEntryModel.setIrregularCFOPs(configurationFileModel.getParticipantCFOPs(), enterpriseCode, referenceStart, referenceEnd, entriesType);
         }    
+    }
+    
+    public class createWarningFile extends Executavel{
+
+        public createWarningFile() {
+            name = "Criando arquivo de erros";
+        }
+
+        @Override
+        public void run() {
+            fiscalEntryView.setIrregularFiscalEntries(fiscalEntryModel.getIrregularFiscalEntries());
+            fiscalEntryView.setParticipantsCFOPs(configurationFileModel.getParticipantCFOPs());
+            
+            fiscalEntryView.createFileWithWarnings(saveFolder, referenceStart + "_" +  referenceEnd, entriesType, enterpriseCode);
+        }
+        
     }
     
     public class setDatabaseStatic extends Executavel{

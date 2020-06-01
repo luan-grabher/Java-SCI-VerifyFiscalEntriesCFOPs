@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import robot.checkfiscalcfopspartipant.Model.Entiry.FiscalEntry;
+import robot.checkfiscalcfopspartipant.View.FiscalEntryView;
 import sql.Database;
 
 public class FiscalEntryModel {
@@ -21,7 +22,7 @@ public class FiscalEntryModel {
         sqlChanges.put("enterpriseCode", enterpriseCode.toString());
         sqlChanges.put("referenceStart", referenceStart.toString());
         sqlChanges.put("referenceEnd", referenceEnd.toString());
-        sqlChanges.put("entriesType", entriesType);
+        sqlChanges.put("entriesType", entriesType.substring(0, 2).toLowerCase());
         
         //Percorre todos os participantes
         for (Map.Entry<Integer, List<Integer>> participantCfops : participantsCFOPs.entrySet()) {
@@ -33,7 +34,7 @@ public class FiscalEntryModel {
             //coloca participante nas trocas do sql
             sqlChanges.put("participant", participant.toString());
             //coloca cfops na lista de in
-            sqlChanges.put("participantCfopsInList", getInIntegerList(cfops));
+            sqlChanges.put("participantCfopsInList", FiscalEntryView.getInIntegerList(cfops));
             
             //pega entradas do banco de dados
             ArrayList<String[]> irregularParticipantEntries = Database.getDatabase().select(sqlFileGetParticipantEntriesOffTheListText, sqlChanges);
@@ -46,21 +47,6 @@ public class FiscalEntryModel {
                 irregularFiscalEntries.add(fiscalEntry);
             }
         }
-    }
-    
-    public String getInIntegerList(List<Integer> list){
-        StringBuilder listString = new StringBuilder();
-        
-        for (Integer integer : list) {
-            //Se nao estiver vazio, adiciona separador
-            if(!listString.toString().equals("")){
-                listString.append(",");
-            }
-            
-            listString.append(integer.toString());
-        }
-        
-        return list.toString();
     }
 
     public List<FiscalEntry> getIrregularFiscalEntries() {
