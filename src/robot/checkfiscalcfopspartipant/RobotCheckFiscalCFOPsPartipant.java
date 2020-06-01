@@ -1,12 +1,31 @@
 package robot.checkfiscalcfopspartipant;
 
-public class RobotCheckFiscalCFOPsPartipant {
+import Entity.Executavel;
+import Executor.Execution;
+import java.util.ArrayList;
+import java.util.List;
+import robot.checkfiscalcfopspartipant.Control.Controller;
 
-    /**
-     * @param args the command line arguments
-     */
+public class RobotCheckFiscalCFOPsPartipant {
+    private static Controller controller = new Controller();
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        execute(false);
+    }
+    
+    public static void execute(boolean isTest){
+        List<Executavel> execs = new ArrayList<>();
+        if(!isTest){
+            execs.add(controller.new setUserInputs());
+        }
+        execs.add(controller.new setDatabaseStatic());
+        execs.add(controller.new setParticipantsCFOPs());
+        execs.add(controller.new setIrregularCFOPs());
+        
+        Execution exec = new Execution("Encontrar lançamentos com CFOPs incorretos");
+        exec.setExecutables(execs);
+        exec.runExecutables();
+        exec.endExecution(false);        
     }
     
 }

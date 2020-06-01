@@ -23,21 +23,43 @@ public class FiscalEntryModel {
         sqlChanges.put("referenceEnd", referenceEnd.toString());
         sqlChanges.put("entriesType", entriesType);
         
+        //Percorre todos os participantes
         for (Map.Entry<Integer, List<Integer>> participantCfops : participantsCFOPs.entrySet()) {
+            //grava participante
             Integer participant = participantCfops.getKey();
+            //grava cfops do participante
             List<Integer> cfops = participantCfops.getValue();
             
+            //coloca participante nas trocas do sql
             sqlChanges.put("participant", participant.toString());
+            //coloca cfops na lista de in
+            sqlChanges.put("participantCfopsInList", getInIntegerList(cfops));
             
+            //pega entradas do banco de dados
             ArrayList<String[]> irregularParticipantEntries = Database.getDatabase().select(sqlFileGetParticipantEntriesOffTheListText, sqlChanges);
             
             for (String[] irregularParticipantEntry : irregularParticipantEntries) {
                 FiscalEntry fiscalEntry = new FiscalEntry();
                 fiscalEntry.setKey(Integer.valueOf(irregularParticipantEntry[0]));
                 fiscalEntry.setParticipant(participant);
-                fiscalEntry.setKey(Integer.valueOf(irregularParticipantEntry[1]));
+                fiscalEntry.setCfop(Integer.valueOf(irregularParticipantEntry[1]));
                 irregularFiscalEntries.add(fiscalEntry);
             }
         }
+    }
+    
+    public String getInIntegerList(List<Integer> list){
+        StringBuilder listString = new StringBuilder();
+        
+        for (Integer integer : list) {
+            //Se nao estiver vazio, adiciona separador
+            if(!listString.toString().equals("")){
+                listString.append(",");
+            }
+            
+            listString.append(integer.toString());
+        }
+        
+        return list.toString();
     }
 }
