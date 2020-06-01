@@ -62,4 +62,9 @@ public class FiscalEntryModel {
         
         return list.toString();
     }
+
+    public List<FiscalEntry> getIrregularFiscalEntries() {
+        return irregularFiscalEntries;
+    }
+       
 }
