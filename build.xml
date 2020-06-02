@@ -70,11 +70,6 @@
     nbproject/build-impl.xml file. 
 
     -->
-    <target name="run" depends="Robot-CheckFiscalCFOPsPartipant-impl.jar">
-        <exec dir="bin" executable="launcher.exe">
-            <arg file="${dist.jar}"/>
-        </exec>
-    </target>
     <copydir src="sql/"
              dest="dist/sql"
     />
