@@ -7,7 +7,7 @@ import java.util.List;
 import robot.checkfiscalcfopspartipant.Control.Controller;
 
 public class RobotCheckFiscalCFOPsPartipant {
-    private static Controller controller = new Controller();
+    private static final Controller controller = new Controller();
     
     public static void main(String[] args) {
         execute(false);
