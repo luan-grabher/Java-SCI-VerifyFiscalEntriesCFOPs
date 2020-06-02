@@ -70,4 +70,8 @@
     nbproject/build-impl.xml file. 
 
     -->
+    
+    <copydir src="${base.path}/sql/"
+             dest="${build.path}/sql"
+    />
 </project>
