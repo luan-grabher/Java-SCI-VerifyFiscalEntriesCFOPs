@@ -10,10 +10,10 @@ import sql.Database;
 
 public class Controller {
     //Models and Views
-    private UserInputsView inputsView;
-    private ConfigurationFileModel configurationFileModel;
-    private FiscalEntryModel fiscalEntryModel;
-    FiscalEntryView fiscalEntryView = new FiscalEntryView();
+    private final UserInputsView inputsView = new UserInputsView();
+    private final ConfigurationFileModel configurationFileModel = new ConfigurationFileModel();
+    private final FiscalEntryModel fiscalEntryModel = new FiscalEntryModel();
+    private final FiscalEntryView fiscalEntryView = new FiscalEntryView();
            
     private Integer enterpriseCode;
     private Integer referenceStart;
