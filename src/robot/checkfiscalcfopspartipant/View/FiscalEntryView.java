@@ -1,5 +1,6 @@
 package robot.checkfiscalcfopspartipant.View;
 
+import Entity.Warning;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,13 @@ public class FiscalEntryView {
             fileText.append(" não é nenhum dos cadastrados: ").append(getInIntegerList(participantsCFOPs.get(irregularFiscalEntry.getParticipant())));
         }
         
-        fileManager.FileManager.save(saveFolder, enterpriseCode + " - CFOPs Errados - " + referencesToName, fileText.toString());
+        String fileName = enterpriseCode + " - CFOPs Errados - " + referencesToName + ".txt";
+        
+        if(fileManager.FileManager.save(saveFolder, fileName, fileText.toString())){
+            throw new Warning("Arquivo '" + fileName +"' salvo em:\n" + saveFolder.getAbsolutePath());
+        }else{
+            throw new Error("Erro ao salvar arquivo '" + fileName +"' em:\n" + saveFolder.getAbsolutePath());
+        }
     }
 
     public static String getInIntegerList(List<Integer> list) {

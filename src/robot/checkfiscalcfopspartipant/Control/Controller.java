@@ -72,9 +72,9 @@ public class Controller {
         @Override
         public void run() {
             fiscalEntryView.setIrregularFiscalEntries(fiscalEntryModel.getIrregularFiscalEntries());
-            fiscalEntryView.setParticipantsCFOPs(configurationFileModel.getParticipantCFOPs());
+            fiscalEntryView.setParticipantsCFOPs(configurationFileModel.getParticipantCFOPs());            
             
-            fiscalEntryView.createFileWithWarnings(saveFolder, referenceStart + "_" +  referenceEnd, entriesType, enterpriseCode);
+            fiscalEntryView.createFileWithWarnings(saveFolder, referenceStart + "_" +  referenceEnd, entriesType, enterpriseCode);            
         }
         
     }
