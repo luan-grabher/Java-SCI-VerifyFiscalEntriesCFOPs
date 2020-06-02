@@ -7,7 +7,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import robot.checkfiscalcfopspartipant.Control.Controller;
 
-public class RobotCheckFiscalCFOPsPartipant {
+public class CheckFiscalCFOPsPartipant {
 
     private static final Controller controller = new Controller();
 
