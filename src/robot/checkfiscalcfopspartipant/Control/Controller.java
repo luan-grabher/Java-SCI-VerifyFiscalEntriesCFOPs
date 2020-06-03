@@ -88,6 +88,9 @@ public class Controller {
         @Override
         public void run() {
             Database.setStaticObject(new Database("sci.cfg"));
+            if(!Database.getDatabase().testConnection()){
+                throw new Error("Erro ao conectar ao banco de dados!");
+            }
         }
         
     }
