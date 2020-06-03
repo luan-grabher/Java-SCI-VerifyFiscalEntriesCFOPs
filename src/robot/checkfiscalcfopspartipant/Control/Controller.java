@@ -38,10 +38,10 @@ public class Controller {
             
             configurationFileModel.setFile(inputsView.getConfigurationFile());
             
-            saveFolder = inputsView.getSaveFolder();
+            //saveFolder = inputsView.getSaveFolder();
+            saveFolder = new File(System.getProperty("user.home") + "/Desktop");
             
-            
-            entriesType = inputsView.getEntriesType();
+            //entriesType = inputsView.getEntriesType();
         }        
     }
     
