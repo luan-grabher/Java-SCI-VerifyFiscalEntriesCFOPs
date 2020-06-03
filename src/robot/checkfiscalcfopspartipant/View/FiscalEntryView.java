@@ -20,7 +20,7 @@ public class FiscalEntryView {
         this.participantsCFOPs = participantsCFOPs;
     }
 
-    public void createFileWithWarnings(File saveFolder, String referencesToName, String entriesType, Integer enterpriseCode) {
+    public void createFileWithWarnings(File saveFolder, String referencesToName, Integer enterpriseCode) {
         StringBuilder fileText = new StringBuilder();
         //percorre entradas irregulares
         for (FiscalEntry irregularFiscalEntry : irregularFiscalEntries) {
@@ -29,7 +29,7 @@ public class FiscalEntryView {
             }
 
             fileText.append("O CFOP ").append(irregularFiscalEntry.getCfop());
-            fileText.append(" do lançamento de ").append(entriesType);
+            fileText.append(" do lançamento de ").append(irregularFiscalEntry.getType());
             fileText.append(" com chave ").append(irregularFiscalEntry.getKey());
             fileText.append(" do participante ").append(irregularFiscalEntry.getParticipant());
             fileText.append(" não é nenhum dos cadastrados: ").append(getInIntegerList(participantsCFOPs.get(irregularFiscalEntry.getParticipant())));

@@ -44,6 +44,7 @@ public class FiscalEntryModel {
                 fiscalEntry.setKey(Integer.valueOf(irregularParticipantEntry[0]));
                 fiscalEntry.setParticipant(participant);
                 fiscalEntry.setCfop(Integer.valueOf(irregularParticipantEntry[1]));
+                fiscalEntry.setType(entriesType);
                 irregularFiscalEntries.add(fiscalEntry);
             }
         }

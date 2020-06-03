@@ -66,7 +66,9 @@ public class Controller {
 
         @Override
         public void run() {
-            fiscalEntryModel.setIrregularCFOPs(configurationFileModel.getParticipantCFOPs(), enterpriseCode, referenceStart, referenceEnd, entriesType);
+            fiscalEntryModel.setIrregularCFOPs(configurationFileModel.getParticipantCFOPs(), enterpriseCode, referenceStart, referenceEnd, "ENTRADA");
+            fiscalEntryModel.setIrregularCFOPs(configurationFileModel.getParticipantCFOPs(), enterpriseCode, referenceStart, referenceEnd, "SAIDA");
+            fiscalEntryModel.setIrregularCFOPs(configurationFileModel.getParticipantCFOPs(), enterpriseCode, referenceStart, referenceEnd, "SERVICO");
         }    
     }
     
@@ -81,7 +83,7 @@ public class Controller {
             fiscalEntryView.setIrregularFiscalEntries(fiscalEntryModel.getIrregularFiscalEntries());
             fiscalEntryView.setParticipantsCFOPs(configurationFileModel.getParticipantCFOPs());            
             
-            fiscalEntryView.createFileWithWarnings(saveFolder, referenceStart + "_" +  referenceEnd, entriesType, enterpriseCode);            
+            fiscalEntryView.createFileWithWarnings(saveFolder, referenceStart + "_" +  referenceEnd, enterpriseCode);            
         }
         
     }
