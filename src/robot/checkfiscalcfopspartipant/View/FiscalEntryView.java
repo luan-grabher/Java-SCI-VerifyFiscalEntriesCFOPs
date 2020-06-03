@@ -29,7 +29,7 @@ public class FiscalEntryView {
             }
 
             fileText.append("O CFOP ").append(irregularFiscalEntry.getCfop());
-            fileText.append("do lançamento de ").append(entriesType);
+            fileText.append(" do lançamento de ").append(entriesType);
             fileText.append(" com chave ").append(irregularFiscalEntry.getKey());
             fileText.append(" do participante ").append(irregularFiscalEntry.getParticipant());
             fileText.append(" não é nenhum dos cadastrados: ").append(getInIntegerList(participantsCFOPs.get(irregularFiscalEntry.getParticipant())));
@@ -56,6 +56,6 @@ public class FiscalEntryView {
             listString.append(integer.toString());
         }
 
-        return list.toString();
+        return listString.toString();
     }
 }

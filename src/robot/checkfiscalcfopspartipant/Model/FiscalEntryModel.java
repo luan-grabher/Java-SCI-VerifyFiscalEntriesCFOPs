@@ -22,7 +22,7 @@ public class FiscalEntryModel {
         sqlChanges.put("enterpriseCode", enterpriseCode.toString());
         sqlChanges.put("referenceStart", referenceStart.toString());
         sqlChanges.put("referenceEnd", referenceEnd.toString());
-        sqlChanges.put("entriesType", entriesType.substring(0, 2).toLowerCase());
+        sqlChanges.put("entriesType", entriesType.substring(0, 3).toLowerCase());
         
         //Percorre todos os participantes
         for (Map.Entry<Integer, List<Integer>> participantCfops : participantsCFOPs.entrySet()) {

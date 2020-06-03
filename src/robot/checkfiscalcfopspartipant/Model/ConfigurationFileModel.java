@@ -32,7 +32,7 @@ public class ConfigurationFileModel {
             String[] collumns = fileTextLine.replaceAll("[^0-9;]", "").split(";");
             
             //If exists minimun of two collumns
-            if(collumns.length > 2){
+            if(collumns.length >= 2){
                 //Define collumns values
                 Integer participant = Integer.valueOf(collumns[0]);
                 Integer cfop = Integer.valueOf(collumns[1]);
