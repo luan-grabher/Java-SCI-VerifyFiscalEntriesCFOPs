@@ -49,6 +49,10 @@ public class UserInputsView {
         return getIntegerValue("Insira a referência final(está inclusa na pesquisa):\nExemplo: 201906 para junho de 2019", "Número de referência inválido!");
     }
     
+    public Integer getReference(){
+        return getIntegerValue("Insira a referência:\nExemplo: 201906 para junho de 2019", "Número de referência inválido!");
+    }
+    
     public String getEntriesType(){
         String[] types = new String[]{"Entrada","Saida","Serviço"};
         

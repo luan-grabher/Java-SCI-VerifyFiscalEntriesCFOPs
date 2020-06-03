@@ -30,10 +30,17 @@ public class Controller {
         @Override
         public void run() {
             enterpriseCode = inputsView.getEnterpriseCode();
-            referenceStart = inputsView.getFirstReference();
-            referenceEnd = inputsView.getLastReference();
+            
+            //referenceStart = inputsView.getFirstReference();
+            //referenceEnd = inputsView.getLastReference();
+            referenceStart = inputsView.getReference();
+            referenceEnd = referenceStart;
+            
             configurationFileModel.setFile(inputsView.getConfigurationFile());
+            
             saveFolder = inputsView.getSaveFolder();
+            
+            
             entriesType = inputsView.getEntriesType();
         }        
     }
