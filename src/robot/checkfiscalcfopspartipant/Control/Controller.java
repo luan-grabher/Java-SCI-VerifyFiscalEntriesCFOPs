@@ -1,6 +1,7 @@
 package robot.checkfiscalcfopspartipant.Control;
 
 import Entity.Executavel;
+import SimpleDotEnv.Env;
 import java.io.File;
 import robot.checkfiscalcfopspartipant.Model.ConfigurationFileModel;
 import robot.checkfiscalcfopspartipant.Model.FiscalEntryModel;
@@ -96,7 +97,7 @@ public class Controller {
 
         @Override
         public void run() {
-            Database.setStaticObject(new Database("sci.cfg"));
+            Database.setStaticObject(new Database(Env.get("databaseCfgFilePath")));
             if(!Database.getDatabase().testConnection()){
                 throw new Error("Erro ao conectar ao banco de dados!");
             }
